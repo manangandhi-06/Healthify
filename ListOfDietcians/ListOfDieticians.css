@@ -1,0 +1,22 @@
+
+h3{
+    padding-top: 20px;
+    padding-left: 20px;
+}
+
+.card-deck {
+    padding-left: 20px;
+}
+
+.btn{
+    float: right;
+}
+
+.logo {
+    height: 50px;
+    width: 50px;
+}
+
+b{
+    padding-left: 10px;
+}

@@ -1,0 +1,11 @@
+.wrapper {
+    background: linear-gradient(to right,#ff7675,#d63031);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+.card-img-top {
+    height : 400px;
+}
