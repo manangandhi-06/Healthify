@@ -1,4 +1,4 @@
-<% include partials/header.ejs %>
+<% include ../partials/header.ejs %>
 
 <link rel="stylesheet" href="../../css/list-of-dishes.css">
 
@@ -6,88 +6,18 @@
             <h3>List of Dishes</h3>
         </div>
         
-        <div class="card-deck">
+        <div class='card-deck'>
+          <% for(var i = 0; i < listOfDishes.length; i++){ %>
             <div class="card">
               <img src="./../../assets/avatar2.png" class="card-img-top" alt="...">
               <div class="card-body">
-                <h5 class="card-title">Dish Name</h5>
-                <p class="card-text">Ingredients</p>
+                <h5 class="card-title"><%= listOfDishes[i].Name%></h5>
+                <p class="card-text">Calorie Count: <%= listOfDishes[i].Caloriecount %></p>
                 <button class="btn btn-danger">
                     More Info
                     <img src="../../assets/forward-24px.svg">
                 </button>
                 </div>
             </div>
-
-            <div class="card">
-              <img src="./../../assets/avatar2.png" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Dish name</h5>
-                <p class="card-text">Ingredients</p>
-                <button class="btn btn-danger">
-                    More Info
-                    <img src="../../assets/forward-24px.svg">
-                </button>
-                </div>
-            </div>
-
-            <div class="card">
-              <img src="./../../assets/avatar2.png" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Dish name</h5>
-                <p class="card-text">Ingredients</p>
-                <button class="btn btn-danger">
-                    More Info
-                    <img src="../../assets/forward-24px.svg">
-                </button>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="./../../assets/avatar2.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Dish name</h5>
-                  <p class="card-text">Ingredients</p>
-                    <button class="btn btn-danger">
-                    More Info
-                    <img src="../../assets/forward-24px.svg">
-                </button>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="./../../assets/avatar2.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Dish name</h5>
-                  <p class="card-text">Ingredients</p>
-                    <button class="btn btn-danger">
-                    More Info
-                    <img src="../../assets/forward-24px.svg">
-                </button>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="./../../assets/avatar2.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Dish name</h5>
-                  <p class="card-text">Ingredients</p>
-                    <button class="btn btn-danger">
-                    More Info
-                    <img src="../../assets/forward-24px.svg">
-                </button>
-                </div>
-            </div>
-            <div class="card">
-                <img src="./../../assets/avatar2.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Dish name</h5>
-                  <p class="card-text">Ingredients</p>
-                    <button class="btn btn-danger">
-                    More Info
-                    <img src="../../assets/forward-24px.svg">
-                </button>
-                </div>
-              </div>
-              
-          </div>
+          <% } %>
+        </div>
