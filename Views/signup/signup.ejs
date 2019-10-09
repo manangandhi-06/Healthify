@@ -16,48 +16,48 @@
                     <a class="navbar-brand"><img class='logo' src='../../assets/logo.png'><b>Welcome to Healthify!</b></a>
             </nav>
             <div class='container'>
-                <form>
+                <form action="/postuserSignup" method="POST">
                     <div class="form-row">
                       <div class="form-group col-md-6">
-                            <label for="userId">User Name</label>
-                            <input type="text" class="form-control" id="userId" placeholder=" Enter UserId">
+                            <label for="username">User Name</label>
+                            <input type="text" class="form-control" id="userId" placeholder="Enter Username" name="Username">
                       </div>
                         <div class="form-group col-md-6">
                             <label for="inputPassword4">Password</label>
-                            <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+                            <input type="password" class="form-control" id="inputPassword4" placeholder="Password" name="Password">
                         </div>
                     </div>
                     <div class="form-group">
                             <label for="inputEmail">Email</label>
-                            <input type="email" class="form-control" id="inputEmail">
+                            <input type="email" class="form-control" id="inputEmail" name="Email">
                     </div>
                     <div class="form-group">
                         <label for="firstname">First Name</label>
-                        <input type="text" class="form-control" id="firstname">
+                        <input type="text" class="form-control" id="firstname" name="Fname">
                     </div>
                     <div class="form-group">
                       <label for="lastname">Last Name</label>
-                      <input type="text" class="form-control" id="lastname">
+                      <input type="text" class="form-control" id="lastname" name="Lname">
                     </div>
                     <div class="form-group">
                         <label for="medhist">Medical History</label>
-                        <input type="text" class="form-control" id="medhist">
+                        <input type="text" class="form-control" id="medhist" name="Medhist">
                     </div>
                     <div class="form-row">
                       <div class="form-group col-md-6">
                         <label for="weight">Weight</label>
-                        <input type="number" class="form-control" id="weight">
+                        <input type="number" class="form-control" id="weight" name="Weight">
                       </div>
                       <div class="form-group col-md-4">
                         <label for="age">Age</label>
-                        <input type="number" class="form-control" id="age">
+                        <input type="number" class="form-control" id="age" name="Age">
                       </div>
                       <div class="form-group col-md-2">
                         <label for="sex">Sex</label>
-                        <input type="text" class="form-control" id="sex">
+                        <input type="text" class="form-control" id="sex" name="Sex">
                       </div>
                     </div>
-                    <button type="submit" class="btn btn-danger">Sign in</button>
+                    <button type="submit" class="btn btn-danger">Submit</button>
                 </form>
             </div>
 

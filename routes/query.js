@@ -10,4 +10,28 @@ const getAllDishes =  async() => {
     return allDishes[0];
 }
 
-module.exports = { getAllDieticians,getAllDishes }
+const insertUser = async(user) => {
+    var user = await client.raw('INSERT INTO user(Username,Fname,Lname,Password,Email,Age,Weight,Medhist,Sex) VALUES(?,?,?,?,?,?,?,?,?)',[user.Username,user.Fname,user.Lname,user.Password,user.Email,user.Age,user.Weight,user.Medhist,user.Sex]).then(resp => resp[0].affectedRows).catch(err => console.log(err))
+    return user
+}
+
+const userLogin = async(user) => {
+    var user = await client.raw('SELECT * FROM user WHERE Username=? AND Password=?',[user.Username,user.Password]).then(result => result[0]).catch(err => console.log(err))
+    if(user.length){
+        return [true,user[0]]
+    }
+    return [false,user]
+}
+
+const getUserDetails = async(uid) => {
+    var user = await client.raw('SELECT * FROM user WHERE Uid=?',[uid])
+    return user[0][0]
+}
+
+const getDieticianDetails = async(Did) => {
+    var dietician = await client.raw('SELECT * FROM dietician WHERE Did=?',[Did])
+    return dietician[0][0]
+}
+
+
+module.exports = { getAllDieticians, getAllDishes, insertUser, userLogin, getUserDetails, getDieticianDetails }

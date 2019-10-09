@@ -1,4 +1,4 @@
-<% include partials/header.ejs %>
+<% include ../partials/header.ejs %>
 
 <link rel="stylesheet" href="../../css/dietician-profile.css">
 
@@ -11,8 +11,10 @@
 
                     <div class="col-4">
                         <div class="card-body">
-                            <h1>Dietician</h1>
-                            <p class="card-text">Dietician Description</p>
+                            <h3><%= dietician.Fname %> <%= dietician.Lname %></h3>
+                            <p class="card-text">Qualification: <%= dietician.Qualification %></p>
+                            <p class="card-text">Experience: <%= dietician.Exp %></p>
+                            <p class="card-text">Specialization: <%= dietician.Specialization %></p>
                         </div>
                     </div>    
                 </div>

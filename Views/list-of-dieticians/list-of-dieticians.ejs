@@ -14,8 +14,8 @@
                     <div class="card-body">
                       <h5 class="card-title"><%= listOfDieticians[i].Fname%></h5>
                       <p class="card-text"><%= listOfDieticians[i].Specialization %></p>
-                      <button class="btn btn-danger">
-                          More Info
+                      <button class="btn">
+                        <a href="/dietician-profile/<%= listOfDieticians[i].Did %>">More Info</a>  
                           <img src="../../assets/forward-24px.svg">
                       </button>
                       </div>
