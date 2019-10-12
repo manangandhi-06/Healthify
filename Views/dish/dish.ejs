@@ -1,4 +1,4 @@
-<% include partials/header.ejs %>
+<% include ../partials/header.ejs %>
 
 <link rel="stylesheet" href="../../css/dish.css">
 
@@ -11,8 +11,10 @@
 
                     <div class="col-4">
                         <div class="card-body">
-                            <h1>Dish Name</h1>
-                            <p class="card-text">Dish Description</p>
+                            <h3><%= dish.Name %></h3>
+                            <p class="card-text">Preparation Time: <%= dish.Preptime %></p>
+                            <p class="card-text">Calorie count: <%= dish.Caloriecount %></p>
+                            <p class="card-text">Nutrition Value: <%= dish.Nutval %></p>
                         </div>
                     </div>    
                 </div>

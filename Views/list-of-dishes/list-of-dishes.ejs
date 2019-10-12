@@ -13,10 +13,9 @@
               <div class="card-body">
                 <h5 class="card-title"><%= listOfDishes[i].Name%></h5>
                 <p class="card-text">Calorie Count: <%= listOfDishes[i].Caloriecount %></p>
-                <button class="btn btn-danger">
-                    More Info
-                    <img src="../../assets/forward-24px.svg">
-                </button>
+                <div class='button'>
+                  <a href="/dish/<%= listOfDishes[i].Id %>" class="btn btn-danger btn-lg" role="button" aria-pressed="true">More Info<img src="../../assets/forward-24px.svg"></a>
+                </div>
                 </div>
             </div>
           <% } %>

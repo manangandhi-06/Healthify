@@ -33,5 +33,19 @@ const getDieticianDetails = async(Did) => {
     return dietician[0][0]
 }
 
+const getDishDetails = async(Id) => {
+    var dish = await client.raw('SELECT * FROM dish WHERE Id=?',[Id])
+    return dish[0][0]
+}
 
-module.exports = { getAllDieticians, getAllDishes, insertUser, userLogin, getUserDetails, getDieticianDetails }
+ const updateConsults = async(Uid,Did) => {
+     var consults = await client.raw('INSERT INTO consults(Uid,Did) VALUES(?,?)', [Uid, Did]).then(resp => resp[0].affectedRows).catch(err => console.log(err))
+     return consults;
+ }
+
+ const updateRecommends = async(Id,Uid) => {
+    var recommends = await client.raw('INSERT INTO recommends(Id, Uid) VALUES(?,?)', [Id, Uid]).then(resp => resp[0].affectedRows).catch(err => console.log(err))
+    return recommends;
+}
+
+module.exports = { getAllDieticians, getAllDishes, insertUser, userLogin, getUserDetails, getDieticianDetails, updateConsults, updateRecommends, getDishDetails }

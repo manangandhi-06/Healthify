@@ -3,7 +3,7 @@ var app = express()
 var bodyParser = require('body-parser')
 var cookieParser = require('cookie-parser')
 
-var { getAllDieticians, getAllDishes, insertUser, userLogin, getUserDetails, getDieticianDetails } = require('./routes/query')
+var { getAllDieticians, getAllDishes, insertUser, userLogin, getUserDetails, getDieticianDetails, updateConsults, updateRecommends, getDishDetails } = require('./routes/query')
 
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -114,7 +114,8 @@ app.get('/dietician-profile/:did', async (req, res) => {
         let Did = req.params.did
         let Uid = JSON.parse(req.cookies['testCookie']).userId
         var dietician = await getDieticianDetails(Did);
-        console.log(dietician)
+        var relation1 = await updateConsults(Uid, Did);
+        console.log(relation1)
         res.render("dietician-profile/dietician-profile",{
             dietician: dietician
         });
@@ -125,6 +126,23 @@ app.get('/dietician-profile/:did', async (req, res) => {
     
 });
 
-app.listen(3000, () => {
-    console.log('App listening on port 3000!');
+app.get('/dish/:id', async (req, res) => {
+    if(req.cookies['testCookie']){
+        let Id = req.params.id
+        let Uid = JSON.parse(req.cookies['testCookie']).userId
+        var dish = await getDishDetails(Id);
+        var relation2 = await updateRecommends(Id, Uid);
+        console.log(relation2)
+        res.render("dish/dish",{
+            dish: dish
+        });
+    }
+    else {
+        res.status(400).json({message:"You are not logged in"})
+    }
+    
+});
+
+app.listen(5000, () => {
+    console.log('App listening on port 5000!');
 });
