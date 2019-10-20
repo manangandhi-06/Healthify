@@ -40,21 +40,38 @@ app.get("/user-profile/:uid", async function (req, res) {
 
 app.get("/list-of-dieticians", async(req, res) => {
 
+    if(req.cookies['testCookie']){
+        let Id = req.params.id
+        let Uid = JSON.parse(req.cookies['testCookie']).userId
+        let listOfDieticians = await getAllDieticians();
+        console.log(listOfDieticians)
+        res.render("list-of-dieticians/list-of-dieticians", {
+                listOfDieticians : listOfDieticians           
+            }
+        )
+    }
+    else {
+        res.status(400).json({message:"You are not logged in"})
+    }
     
-    let listOfDieticians = await getAllDieticians();
-    console.log(listOfDieticians)
-    res.render("list-of-dieticians/list-of-dieticians", {
-            listOfDieticians : listOfDieticians           
-        }
-    )
 })
 
 app.get("/list-of-dishes", async(req, res) => {
-    let listOfDishes = await getAllDishes();
-    res.render("list-of-dishes/list-of-dishes", {
-            listOfDishes : listOfDishes           
-        }
-    )
+
+    if(req.cookies['testCookie']){
+        let Id = req.params.id
+        let Uid = JSON.parse(req.cookies['testCookie']).userId
+        let listOfDishes = await getAllDishes();
+        res.render("list-of-dishes/list-of-dishes", {
+                listOfDishes : listOfDishes           
+            }
+        )}
+    else {
+        res.status(400).json({message:"You are not logged in"})
+    }
+    
+
+
 })
 
 app.post('/postuserSignup' ,async (req, res) => {
@@ -105,7 +122,6 @@ app.post('/signin', async (req, res) => {
 });
 
 app.post('/logout', async (req, res) => {
-    console.log("hellowolrlds")
     if(req.cookies['testCookie']){
         res.clearCookie('testCookie')
     }
