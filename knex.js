@@ -3,8 +3,8 @@ module.exports = require('knex')({
     connection: {
       host : 'localhost',
       user : 'root',
-      password : 'manhit7624',
-      database : 'dbms'
+      password : 'miloni15',
+      database : 'dbms2'
     }
   });
 

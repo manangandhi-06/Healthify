@@ -1,0 +1,30 @@
+<% include ../partials/header.ejs %>
+
+<link rel="stylesheet" href="../../css/dish.css">
+
+        <div class="container">
+            <div class="card">
+                    <% listofrefDishes.forEach(function(dish){ %>
+                <div class="row">
+                    <div class="col-4">
+                        <img class="card-img-top" src="./../../assets/avatar2.png">
+                    </div>
+                    
+                    <div class="col-4">
+                        <div class="card-body">
+                            <h3><%= dish.Name %></h3>
+                            <p class="card-text">Preparation Time: <%= dish.Preptime %></p>
+                            <p class="card-text">Calorie count: <%= dish.Caloriecount %></p>
+                            <p class="card-text">Nutrition Value: <%= dish.Nutval %></p>
+                        </div>
+                    </div>    
+                </div>
+                <% }); %>
+            </div>
+            <div class='button'>
+                <button class="btn btn-danger">
+                    Final Report
+                    <img src="../../assets/forward-24px.svg">
+                </button>
+            </div>
+        </div>

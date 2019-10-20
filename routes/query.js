@@ -10,6 +10,16 @@ const getAllDishes =  async() => {
     return allDishes[0];
 }
 
+const refDishes =  async(Uid) => {
+    let allrefDishes = await client.raw('SELECT * FROM dish INNER JOIN recommends ON dish.Id=recommends.Id where recommends.Uid=?',[Uid]).then(result => result[0]).catch(err => console.log(err))
+    return allrefDishes;
+}
+
+const refDieticians=  async(Uid) => {
+    let allrefDieticians = await client.raw('SELECT dietician.Fname,dietician.Lname,dietician.Qualification,dietician.Exp FROM dietician INNER JOIN consults ON dietician.Did=consults.Did where consults.Uid=?;',[Uid]).then(result => result[0]).catch(err => console.log(err))
+    return allrefDieticians;
+}
+
 const insertUser = async(user) => {
     var user = await client.raw('INSERT INTO user(Username,Fname,Lname,Password,Email,Age,Weight,Medhist,Sex) VALUES(?,?,?,?,?,?,?,?,?)',[user.Username,user.Fname,user.Lname,user.Password,user.Email,user.Age,user.Weight,user.Medhist,user.Sex]).then(resp => resp[0].affectedRows).catch(err => console.log(err))
     return user
@@ -48,4 +58,4 @@ const getDishDetails = async(Id) => {
     return recommends;
 }
 
-module.exports = { getAllDieticians, getAllDishes, insertUser, userLogin, getUserDetails, getDieticianDetails, updateConsults, updateRecommends, getDishDetails }
+module.exports = { getAllDieticians, getAllDishes, insertUser, userLogin, getUserDetails, getDieticianDetails, updateConsults, updateRecommends, getDishDetails, refDishes, refDieticians }

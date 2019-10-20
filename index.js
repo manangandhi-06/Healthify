@@ -3,7 +3,7 @@ var app = express()
 var bodyParser = require('body-parser')
 var cookieParser = require('cookie-parser')
 
-var { getAllDieticians, getAllDishes, insertUser, userLogin, getUserDetails, getDieticianDetails, updateConsults, updateRecommends, getDishDetails } = require('./routes/query')
+var { getAllDieticians, getAllDishes, insertUser, userLogin, getUserDetails, getDieticianDetails, updateConsults, updateRecommends, getDishDetails, refDishes, refDieticians } = require('./routes/query')
 
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -70,8 +70,38 @@ app.get("/list-of-dishes", async(req, res) => {
         res.status(400).json({message:"You are not logged in"})
     }
     
+})
 
+app.get("/ref-dishes", async(req, res) => {
 
+    if(req.cookies['testCookie']){
+        let Id = req.params.id
+        let Uid = JSON.parse(req.cookies['testCookie']).userId
+        let listofrefDishes = await refDishes(Uid);
+        //console.log(listofrefDishes);
+        res.render("ref-dishes/ref-dishes", {
+                listofrefDishes : listofrefDishes           
+            }
+        )}
+    else {
+        res.status(400).json({message:"You are not logged in"})
+    }
+})
+
+app.get("/ref-dieticians", async(req, res) => {
+
+    if(req.cookies['testCookie']){
+        let Id = req.params.id
+        let Uid = JSON.parse(req.cookies['testCookie']).userId
+        let listofrefDieticians = await refDieticians(Uid);
+        //console.log(listofrefDishes);
+        res.render("ref-dieticians/ref-dieticians", {
+                listofrefDieticians: listofrefDieticians           
+            }
+        )}
+    else {
+        res.status(400).json({message:"You are not logged in"})
+    }
 })
 
 app.post('/postuserSignup' ,async (req, res) => {
@@ -162,6 +192,6 @@ app.get('/dish/:id', async (req, res) => {
     
 });
 
-app.listen(5000, () => {
-    console.log('App listening on port 5000!');
+app.listen(3000, () => {
+    console.log('App listening on port 3000!');
 });
