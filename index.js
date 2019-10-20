@@ -39,6 +39,8 @@ app.get("/user-profile/:uid", async function (req, res) {
 })
 
 app.get("/list-of-dieticians", async(req, res) => {
+
+    
     let listOfDieticians = await getAllDieticians();
     console.log(listOfDieticians)
     res.render("list-of-dieticians/list-of-dieticians", {
@@ -103,6 +105,7 @@ app.post('/signin', async (req, res) => {
 });
 
 app.post('/logout', async (req, res) => {
+    console.log("hellowolrlds")
     if(req.cookies['testCookie']){
         res.clearCookie('testCookie')
     }
