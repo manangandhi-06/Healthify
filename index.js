@@ -24,7 +24,6 @@ app.get("/signup", function (req, res) {
 
 app.get("/user-profile/:uid", async function (req, res) {
 
-
     if (req.cookies['testCookie']){
         var userId = req.params.uid;
         var user = await getUserDetails(userId);
