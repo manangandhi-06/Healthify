@@ -4,16 +4,12 @@
     height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center
+   
+}
 
-  }
 
 .card-img-top {
     height : 260px;
 }
 
-body{
-  background-image: url('back3.jpeg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  } 

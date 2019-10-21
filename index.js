@@ -13,6 +13,9 @@ app.use('/css', express.static('css'));
 
 app.use('/assets', express.static('assets'));
 
+app.get("/welcome",function(req,res){
+    res.render("welcome/welcome");
+});
 
 app.get("/", function (req, res) {
     res.render("login/login");
