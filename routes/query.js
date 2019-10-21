@@ -11,12 +11,12 @@ const getAllDishes =  async() => {
 }
 
 const refDishes =  async(Uid) => {
-    let allrefDishes = await client.raw('SELECT * FROM dish INNER JOIN recommends ON dish.Id=recommends.Id where recommends.Uid=?',[Uid]).then(result => result[0]).catch(err => console.log(err))
+    let allrefDishes = await client.raw('SELECT distinct * FROM dish INNER JOIN recommends ON dish.Id=recommends.Id where recommends.Uid=?',[Uid]).then(result => result[0]).catch(err => console.log(err))
     return allrefDishes;
 }
 
 const refDieticians=  async(Uid) => {
-    let allrefDieticians = await client.raw('SELECT dietician.Fname,dietician.Lname,dietician.Qualification,dietician.Exp FROM dietician INNER JOIN consults ON dietician.Did=consults.Did where consults.Uid=?;',[Uid]).then(result => result[0]).catch(err => console.log(err))
+    let allrefDieticians = await client.raw('SELECT distinct dietician.Fname,dietician.Lname,dietician.Qualification,dietician.Exp FROM dietician INNER JOIN consults ON dietician.Did=consults.Did where consults.Uid=?;',[Uid]).then(result => result[0]).catch(err => console.log(err))
     return allrefDieticians;
 }
 
